@@ -41,8 +41,3 @@ jobs:
       - store_artifacts:
           path: /tmp/test-results
           destination: test-results
-
-      #  Run annotate if missing
-      - run:
-          name: Check for missing annotations
-          command: RAILS_ENV=test bundle exec annotate
