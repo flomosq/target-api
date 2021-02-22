@@ -36,6 +36,10 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'annotate', '~> 3.1.1'
+  gem 'rubocop-rails', '~> 2.9.1', require: false
+  gem 'reek', '~> 6.0.3'
+  gem 'rails_best_practices', '~> 1.20.0'
+  gem 'brakeman', '~> 5.0.0'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
