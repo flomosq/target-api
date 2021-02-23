@@ -41,3 +41,8 @@ jobs:
       - store_artifacts:
           path: /tmp/test-results
           destination: test-results
+
+      # Run code analysis
+      - run:
+          name: run code analysis
+          command: RAILS_ENV=test bundle exec rake code_analysis

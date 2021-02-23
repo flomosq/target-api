@@ -1,5 +1,12 @@
 Documentation:
   Enabled: false
+AllCops:
+  Exclude:
+    - lib/tasks/**/*
+    - db/**/*
+    - config/**/*
+    - bin/**/*
+    - vendor/**/*
 Layout/SpaceBeforeFirstArg:
   Exclude:
     - app/views/api/**/**/*
@@ -13,10 +20,6 @@ Metrics/AbcSize:
 Metrics/BlockLength:
   CountComments: false  # count full line comments?
   Max: 25
-  Exclude:
-    - config/**/*
-    - spec/**/*
-    - app/admin/**/*
 Metrics/BlockNesting:
   Max: 4
 Metrics/ClassLength:
