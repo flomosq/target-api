@@ -6,6 +6,7 @@ AllCops:
     - db/**/*
     - config/**/*
     - bin/**/*
+    - vendor/**/*
 Layout/SpaceBeforeFirstArg:
   Exclude:
     - app/views/api/**/**/*
