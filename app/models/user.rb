@@ -11,6 +11,7 @@
 #  confirmed_at           :datetime
 #  email                  :string
 #  encrypted_password     :string           default(""), not null
+#  gender                 :integer
 #  image                  :string
 #  name                   :string
 #  nickname               :string
@@ -37,4 +38,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   include DeviseTokenAuth::Concerns::User
+
+  enum gender: [ :male, :female, :other ]
+  validates :gender, presence: true, inclusion: { in: genders.keys, message: :invalid }
 end
