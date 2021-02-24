@@ -5,7 +5,7 @@ RSpec.describe 'POST /auth', type: :request do
   let(:password) { '12345678' }
   let(:password_confirmation) { '12345678' }
   let(:gender) { 'female' }
-  
+
   let(:params) do
     {
       email: email,
