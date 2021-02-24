@@ -103,4 +103,20 @@ RSpec.describe 'POST /auth', type: :request do
     end
   end
 
+  context 'when the gender is not correct' do
+    let(:user) { User.last }
+    let(:gender) { 'gender' }
+
+    it 'does not create the user' do
+      expect {
+        subject
+      }.not_to change(User, :count)
+    end
+
+    it 'does not return a successful response' do
+      subject
+
+      expect(response).to have_http_status(:unprocessable_entity)
+    end
+  end
 end
