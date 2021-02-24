@@ -39,6 +39,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :validatable
   include DeviseTokenAuth::Concerns::User
 
-  enum gender: %i[male female other]
+  enum gender: { male: 0, female: 1, other: 2 }
   validates :gender, presence: true, inclusion: { in: genders.keys, message: :invalid }
 end
