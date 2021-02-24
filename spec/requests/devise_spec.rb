@@ -35,4 +35,20 @@ RSpec.describe 'POST /auth', type: :request do
     expect(json[:data]).to match(a_hash_including(email: email, gender: gender))
   end
 
+  context 'when the email is not correct' do
+    let(:email) { 'invalid_email' }
+
+    it 'does not create the user' do
+      expect {
+        subject
+      }.not_to change(User, :count)
+    end
+
+    it 'does not return a successful response' do
+      subject
+
+      expect(response).to have_http_status(:unprocessable_entity)
+    end
+  end
+
 end
