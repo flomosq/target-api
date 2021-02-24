@@ -11,7 +11,7 @@
 #  confirmed_at           :datetime
 #  email                  :string
 #  encrypted_password     :string           default(""), not null
-#  gender                 :integer
+#  gender                 :integer          not null
 #  image                  :string
 #  name                   :string
 #  nickname               :string
