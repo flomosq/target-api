@@ -28,4 +28,13 @@ RSpec.describe 'POST api/v1/users/sign_in', type: :request do
     expect(json[:data]).to match(a_hash_including(email: user.email, gender: user.gender,
                                                   id: user.id, uid: user.uid))
   end
+
+  it 'returns valid client and access token' do
+    subject
+
+    token = response.header['access-token']
+    client = response.header['client']
+
+    expect(user.reload.valid_token?(token, client)).to be_truthy
+  end
 end
