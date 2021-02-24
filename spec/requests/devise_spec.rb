@@ -1,31 +1,38 @@
 require 'rails_helper'
 
-RSpec.describe 'Devise Token Auth', type: :request do
-  it 'registers a user' do
-    headers = { 'ACCEPT' => 'application/json' }
-    params = {
-      email: 'florencia.mosquera@rootstrap.com',
-      password: 'password',
-      password_confirmation: 'password',
-      gender: :female
+RSpec.describe 'POST /auth', type: :request do
+  let(:email) { 'test@test.com' }
+  let(:password) { '12345678' }
+  let(:password_confirmation) { '12345678' }
+  let(:gender) { 'female' }
+  
+  let(:params) do
+    {
+      email: email,
+      password: password,
+      password_confirmation: password_confirmation,
+      gender: gender
     }
-    post '/auth', params: params, headers: headers
+  end
 
-    expect(response.content_type).to eq('application/json; charset=utf-8')
+  subject { post user_registration_path, params: params }
+
+  it 'returns a successful response' do
+    subject
+
     expect(response).to have_http_status(:ok)
   end
 
-  it 'does not register a user if data is incorrect' do
-    headers = { 'ACCEPT' => 'application/json' }
-    params = {
-      email: 'florencia.mosquera@rootstrap.com',
-      password: 'password',
-      password_confirmation: 'password2',
-      gender: :female
-    }
-    post '/auth', params: params, headers: headers
-
-    expect(response.content_type).to eq('application/json; charset=utf-8')
-    expect(response).to have_http_status(:unprocessable_entity)
+  it 'creates the user' do
+    expect {
+      subject
+    }.to change(User, :count).by(1)
   end
+
+  it 'returns the user' do
+    subject
+
+    expect(json[:data]).to match(a_hash_including(email: email, gender: gender))
+  end
+
 end
