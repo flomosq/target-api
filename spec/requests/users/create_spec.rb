@@ -20,7 +20,7 @@ RSpec.describe 'POST /auth', type: :request do
   it 'returns a successful response' do
     subject
 
-    expect(response).to have_http_status(:ok)
+    expect(response).to be_successful
   end
 
   it 'creates the user' do
