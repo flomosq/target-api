@@ -44,11 +44,7 @@ RSpec.describe 'POST api/v1/users/sign_in', type: :request do
     it 'returns unauthorized' do
       subject
 
-      token = response.header['access-token']
-      client = response.header['client']
-
       expect(response).to have_http_status(:unauthorized)
     end
   end
-
 end
