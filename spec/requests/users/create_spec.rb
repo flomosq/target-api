@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'POST /auth', type: :request do
+RSpec.describe 'POST api/v1/users', type: :request do
   let(:email) { 'test@test.com' }
   let(:password) { '12345678' }
   let(:password_confirmation) { '12345678' }
