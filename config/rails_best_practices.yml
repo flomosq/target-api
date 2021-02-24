@@ -17,7 +17,7 @@ NotUseTimeAgoInWordsCheck: { }
 OveruseRouteCustomizationsCheck: { customize_count: 10 }
 ProtectMassAssignmentCheck: { }
 RemoveEmptyHelpersCheck: { }
-RemoveTrailingWhitespaceCheck: { }
+RemoveTrailingWhitespaceCheck: { ignored_files: ['db/migrate', 'config/initializers'] } 
 RemoveUnusedMethodsInHelpersCheck: { except_methods: [] }
 ReplaceComplexCreationWithFactoryMethodCheck: { attribute_assignment_count: 2 }
 ReplaceInstanceVariableWithLocalVariableCheck: { }

@@ -1,3 +1,5 @@
+require: rubocop-rails
+
 Documentation:
   Enabled: false
 AllCops:
@@ -18,6 +20,8 @@ Metrics/AbcSize:
   # a Float.
   Max: 15
 Metrics/BlockLength:
+  Exclude:
+    - spec/**/*
   CountComments: false  # count full line comments?
   Max: 25
 Metrics/BlockNesting:
@@ -34,7 +38,7 @@ Metrics/MethodLength:
 Metrics/ModuleLength:
   CountComments: false  # count full line comments?
   Max: 200
-Metrics/LineLength:
+Layout/LineLength:
   Max: 100
   # To make it possible to copy or click on URIs in the code, we allow lines
   # containing a URI to be longer than Max.
@@ -53,3 +57,5 @@ Style/ModuleFunction:
   Enabled: false
 Style/BlockDelimiters:
   EnforcedStyle: braces_for_chaining
+Rails/EnumHash:
+  Enabled: true
