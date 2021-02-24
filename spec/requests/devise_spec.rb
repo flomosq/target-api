@@ -85,4 +85,22 @@ RSpec.describe 'POST /auth', type: :request do
     end
   end
 
+  context 'when the passwords do not match' do
+    let(:user) { User.last }
+    let(:password) { 'password' }
+    let(:password_confirmation) { 'password_confirmation' }
+
+    it 'does not create the user' do
+      expect {
+        subject
+      }.not_to change(User, :count)
+    end
+
+    it 'does not return a successful response' do
+      subject
+
+      expect(response).to have_http_status(:unprocessable_entity)
+    end
+  end
+
 end
