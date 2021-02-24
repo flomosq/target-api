@@ -37,4 +37,18 @@ RSpec.describe 'POST api/v1/users/sign_in', type: :request do
 
     expect(user.reload.valid_token?(token, client)).to be_truthy
   end
+
+  context 'when given incorrect params' do
+    let(:password) { 'wrong_pass' }
+
+    it 'returns unauthorized' do
+      subject
+
+      token = response.header['access-token']
+      client = response.header['client']
+
+      expect(response).to have_http_status(:unauthorized)
+    end
+  end
+
 end
