@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'POST /auth', type: :request do
+RSpec.describe 'POST api/v1/users', type: :request do
   let(:email) { 'test@test.com' }
   let(:password) { '12345678' }
   let(:password_confirmation) { '12345678' }
@@ -52,7 +52,6 @@ RSpec.describe 'POST /auth', type: :request do
   end
 
   context 'when the password is too short' do
-    let(:user) { User.last }
     let(:password) { 'short' }
 
     it 'does not create the user' do
@@ -69,7 +68,6 @@ RSpec.describe 'POST /auth', type: :request do
   end
 
   context 'when the password is too long' do
-    let(:user) { User.last }
     let(:password) { 'thisisaverylongpassword' }
 
     it 'does not create the user' do
@@ -86,7 +84,6 @@ RSpec.describe 'POST /auth', type: :request do
   end
 
   context 'when the passwords do not match' do
-    let(:user) { User.last }
     let(:password) { 'password' }
     let(:password_confirmation) { 'password_confirmation' }
 
@@ -104,7 +101,6 @@ RSpec.describe 'POST /auth', type: :request do
   end
 
   context 'when the gender is not correct' do
-    let(:user) { User.last }
     let(:gender) { 'gender' }
 
     it 'does not create the user' do

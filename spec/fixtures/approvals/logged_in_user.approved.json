@@ -1,0 +1,13 @@
+{
+  "data": {
+    "email": "<sequence>",
+    "uid": "<sequence>",
+    "id": "<id>",
+    "provider": "email",
+    "allow_password_change": false,
+    "name": null,
+    "nickname": null,
+    "image": null,
+    "gender": "female"
+  }
+}
