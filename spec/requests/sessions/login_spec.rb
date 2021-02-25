@@ -26,9 +26,9 @@ RSpec.describe 'POST api/v1/users/sign_in', type: :request do
 
     Approvals.verify(response.body, name: 'logged_in_user', format: :json)
     expect(json[:data]).to include(
-      :email => user.email,
-      :id => user.id,
-      :uid => user.uid
+      email: user.email,
+      id: user.id,
+      uid: user.uid
     )
   end
 
