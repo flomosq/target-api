@@ -7,7 +7,7 @@ module Helpers
     @auth_headers ||= user.create_new_auth_token
   end
 
-  def new_auth_headers
+  def create_auth_headers
     @auth_headers = user.create_new_auth_token
   end
 end
