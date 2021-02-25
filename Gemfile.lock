@@ -63,6 +63,9 @@ GEM
     annotate (3.1.1)
       activerecord (>= 3.2, < 7.0)
       rake (>= 10.4, < 14.0)
+    approvals (0.0.11)
+      nokogiri
+      thor
     ast (2.4.2)
     bcrypt (3.1.16)
     bootsnap (1.7.2)
@@ -237,6 +240,7 @@ PLATFORMS
 
 DEPENDENCIES
   annotate (~> 3.1.1)
+  approvals (~> 0.0.11)
   bootsnap (>= 1.4.4)
   brakeman (~> 5.0.0)
   byebug

@@ -24,8 +24,12 @@ RSpec.describe 'POST api/v1/users/sign_in', type: :request do
   it 'returns the user' do
     subject
 
-    expect(json[:data]).to match(a_hash_including(email: user.email, gender: user.gender,
-                                                  id: user.id, uid: user.uid))
+    Approvals.verify(response.body, name: 'logged_in_user', format: :json)
+    expect(json[:data]).to include(
+      :email => user.email,
+      :id => user.id,
+      :uid => user.uid
+    )
   end
 
   it 'returns valid client and access token' do

@@ -16,6 +16,7 @@
 
 require 'helpers'
 require 'support/factory_bot'
+require 'support/approvals'
 
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
