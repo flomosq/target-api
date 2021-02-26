@@ -4,6 +4,6 @@ FactoryBot.define do
     password { '12345678' }
     gender { 'female' }
 
-    after(:create)  { |u| u.confirm }
+    after(:create, &:confirm)
   end
 end
