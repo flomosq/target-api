@@ -48,3 +48,7 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
+
+gem "sendgrid", "~> 1.2"
+
+gem "dotenv-rails", "~> 2.7"
