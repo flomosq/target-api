@@ -3,12 +3,10 @@ require 'rails_helper'
 RSpec.describe 'DELETE api/v1/users/sign_out', type: :request do
   let(:user) { create(:user) }
 
-  subject { delete destroy_user_session_path, headers: @req_headers }
+  subject { delete destroy_user_session_path, headers: auth_headers }
 
   context 'when given correct headers' do
-    before(:each) do
-      @req_headers = create_auth_headers
-    end
+    let!(:auth_headers) { create_auth_headers }
 
     it 'returns a successful response' do
       subject
@@ -24,7 +22,7 @@ RSpec.describe 'DELETE api/v1/users/sign_out', type: :request do
   end
 
   context 'when given incorrect headers' do
-    @req_headers = {}
+    let!(:auth_headers) { {} }
 
     it 'returns unauthorized' do
       subject
