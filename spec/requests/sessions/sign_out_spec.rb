@@ -2,14 +2,13 @@ require 'rails_helper'
 
 RSpec.describe 'DELETE api/v1/users/sign_out', type: :request do
   let(:user) { create(:user) }
-  let(:req_headers) { auth_headers }
 
   subject { delete destroy_user_session_path, headers: req_headers }
 
   context 'when given correct headers' do
     let(:req_headers) { auth_headers }
 
-    before { create_auth_headers }
+    before { refresh_auth_headers }
 
     it 'returns a successful response' do
       subject
