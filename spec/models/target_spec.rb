@@ -25,5 +25,22 @@
 require 'rails_helper'
 
 RSpec.describe Target, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  subject { build(:target) }
+
+  describe 'validations' do
+    it { is_expected.to validate_presence_of(:title) }
+    it { is_expected.to validate_presence_of(:radius) }
+    it { is_expected.to validate_presence_of(:latitude) }
+    it { is_expected.to validate_presence_of(:longitude) }
+    it {
+      is_expected.to validate_numericality_of(:latitude)
+        .is_less_than_or_equal_to(90)
+        .is_greater_than_or_equal_to(-90)
+    }
+    it {
+      is_expected.to validate_numericality_of(:longitude)
+        .is_less_than_or_equal_to(180)
+        .is_greater_than_or_equal_to(-180)
+    }
+  end
 end
