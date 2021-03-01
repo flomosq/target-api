@@ -21,4 +21,14 @@ RSpec.describe 'GET api/v1/topics', type: :request do
       expect(topics.length).to eq 3
     end
   end
+
+  context 'when given incorrect headers' do
+    let!(:auth_headers) { {} }
+
+    it 'returns unauthorized' do
+      subject
+
+      expect(response).to be_unauthorized
+    end
+  end
 end
