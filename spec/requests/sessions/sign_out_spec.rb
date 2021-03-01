@@ -6,7 +6,7 @@ RSpec.describe 'DELETE api/v1/users/sign_out', type: :request do
   subject { delete destroy_user_session_path, headers: auth_headers }
 
   context 'when given correct headers' do
-    let!(:auth_headers) { create_auth_headers }
+    let!(:auth_headers) { user.create_new_auth_token }
 
     it 'returns a successful response' do
       subject
