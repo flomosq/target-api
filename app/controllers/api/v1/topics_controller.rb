@@ -5,7 +5,7 @@ module Api
 
       def index
         @topics = Topic.all
-        render json: @topics
+        render json: { topics: @topics }
       end
     end
   end
