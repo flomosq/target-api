@@ -88,6 +88,10 @@ GEM
       devise (> 3.5.2, < 5)
       rails (>= 4.2.0, < 6.2)
     diff-lcs (1.4.4)
+    dotenv (2.7.6)
+    dotenv-rails (2.7.6)
+      dotenv (= 2.7.6)
+      railties (>= 3.2)
     erubi (1.10.0)
     erubis (2.7.0)
     factory_bot (6.1.0)
@@ -215,6 +219,8 @@ GEM
       rack (>= 1.1)
       rubocop (>= 0.90.0, < 2.0)
     ruby-progressbar (1.11.0)
+    sendgrid (1.2.4)
+      json
     sexp_processor (4.15.2)
     spring (2.1.1)
     sprockets (4.0.2)
@@ -245,6 +251,7 @@ DEPENDENCIES
   brakeman (~> 5.0.0)
   byebug
   devise_token_auth (~> 1.1.5)
+  dotenv-rails (~> 2.7)
   factory_bot_rails (~> 6.1.0)
   listen (~> 3.3)
   pg (~> 1.1)
@@ -254,6 +261,7 @@ DEPENDENCIES
   reek (~> 6.0.3)
   rspec-rails (~> 4.0.2)
   rubocop-rails (~> 2.9.1)
+  sendgrid (~> 1.2)
   spring
   tzinfo-data
 

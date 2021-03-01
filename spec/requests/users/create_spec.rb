@@ -29,6 +29,12 @@ RSpec.describe 'POST api/v1/users', type: :request do
     }.to change(User, :count).by(1)
   end
 
+  it 'sends email confirmation' do
+    expect {
+      subject
+    }.to change(ActionMailer::Base.deliveries, :count).by(1)
+  end
+
   it 'returns the user' do
     subject
 
