@@ -13,6 +13,6 @@
 #
 FactoryBot.define do
   factory :topic do
-    name { "MyString" }
+    name { Faker::Lorem.unique.word }
   end
 end
