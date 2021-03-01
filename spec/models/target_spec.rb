@@ -43,4 +43,9 @@ RSpec.describe Target, type: :model do
         .is_greater_than_or_equal_to(-180)
     }
   end
+
+  describe 'associations' do
+    it { is_expected.to belong_to(:topic) }
+    it { is_expected.to belong_to(:user) }
+  end
 end
