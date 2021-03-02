@@ -24,11 +24,11 @@
 #
 FactoryBot.define do
   factory :target do
-    title { 'MyString' }
-    radius { 1 }
-    latitude { '9.99' }
-    longitude { '9.99' }
-    topic { nil }
-    user { nil }
+    user
+    topic
+    title { Faker::Lorem.sentence(word_count: 3) }
+    radius { Faker::Number.within(range: 1..5000) }
+    latitude { Faker::Address.latitude }
+    longitude { Faker::Address.longitude }
   end
 end
