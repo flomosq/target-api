@@ -48,4 +48,16 @@ RSpec.describe Target, type: :model do
     it { is_expected.to belong_to(:topic) }
     it { is_expected.to belong_to(:user) }
   end
+
+  context 'when the user has 10 targets' do
+    let(:user) { create(:user) }
+
+    before { create_list(:target, 10, user: user) }
+
+    subject { build(:target, user: user) }
+
+    it 'target is invalid' do
+      expect(subject).to be_invalid
+    end
+  end
 end
