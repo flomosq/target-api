@@ -18,7 +18,7 @@ RSpec.describe 'GET api/v1/topics', type: :request do
 
       topics_list = json[:topics]
 
-      expect(topics_list.length).to eq 3
+      expect(topics_list.count).to eq(3)
     end
 
     it 'returns the existing topics' do
