@@ -25,7 +25,7 @@
 require 'rails_helper'
 
 RSpec.describe Target, type: :model do
-  subject { build(:target) }
+  subject { create(:target) }
 
   describe 'validations' do
     it { is_expected.to validate_presence_of(:title) }
