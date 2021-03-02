@@ -1,9 +1,9 @@
 RSpec.describe 'GET api/v1/topics', type: :request do
   let(:user) { create(:user) }
   let!(:topics) { create_list(:topic, 3) }
-  
+
   subject { get api_v1_topics_path, headers: headers }
-  
+
   context 'when the request is correct' do
     let!(:headers) { auth_headers }
 
