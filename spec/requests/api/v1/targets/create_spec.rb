@@ -1,19 +1,25 @@
 RSpec.describe 'POST api/v1/targets', type: :request do
   let(:user) { create(:user) }
   let(:topic) { create(:topic) }
-  let!(:target) { attributes_for(:target, topic_id: topic.id) }
+  let(:target) { attributes_for(:target, topic_id: topic.id) }
 
-  let(:params) { { target: target } }
+  let!(:params) { { target: target } }
+
+  let!(:headers) { auth_headers }
 
   subject { post api_v1_targets_path, params: params, headers: headers }
 
   context 'when the request is correct' do
-    let!(:headers) { auth_headers }
-
     it 'returns a successful response' do
       subject
 
       expect(response).to be_successful
+    end
+
+    it 'creates the target' do
+      expect {
+        subject
+      }.to change(Target, :count).by(1)
     end
 
     it 'returns the target' do
