@@ -27,9 +27,7 @@ RSpec.describe 'GET api/v1/topics', type: :request do
       topics_list = json[:topics]
       existing_topics_data = topics.map { |topic| { id: topic.id, name: topic.name } }
 
-      expect(topics_list).to contain_exactly(
-        *existing_topics_data.map { |t| a_hash_including(t) }
-      )
+      expect(topics_list).to include_unordered_json(existing_topics_data)
     end
   end
 

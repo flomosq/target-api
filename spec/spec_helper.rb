@@ -15,6 +15,7 @@
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
 require 'helpers'
+require 'rspec/json_expectations'
 require 'support/factory_bot'
 require 'support/approvals'
 
