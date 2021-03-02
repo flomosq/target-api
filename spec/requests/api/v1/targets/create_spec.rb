@@ -46,4 +46,22 @@ RSpec.describe 'POST api/v1/targets', type: :request do
       expect(response).to be_unauthorized
     end
   end
+
+  context 'when missing any of the required values' do
+    before do
+      target[:title] = nil
+    end
+
+    it 'returns bad request' do
+      subject
+
+      expect(response).to be_bad_request
+    end
+
+    it 'is expected an error message' do
+      subject
+
+      expect(json).to have_key(:errors)
+    end
+  end
 end
