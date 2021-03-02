@@ -3,7 +3,7 @@ module Api
     class TargetsController < ApplicationController
       def create
         @target = user_targets.create!(target_params)
-        render json: { target: @target }
+        render :show
       end
 
       private

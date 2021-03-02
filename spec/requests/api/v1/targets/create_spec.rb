@@ -20,8 +20,7 @@ RSpec.describe 'POST api/v1/targets', type: :request do
       subject
 
       expect(json[:target]).to include(
-        user_id: user.id,
-        topic_id: topic.id,
+        topic: { id: topic.id, name: topic.name },
         title: target[:title],
         radius: target[:radius]
       )
