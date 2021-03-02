@@ -11,8 +11,6 @@
 #
 #  index_topics_on_name  (name) UNIQUE
 #
-require 'rails_helper'
-
 RSpec.describe Topic, type: :model do
   subject { build(:topic) }
 
