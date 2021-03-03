@@ -56,7 +56,7 @@ RSpec.describe Target, type: :model do
 
     subject { build(:target, user: user) }
 
-    it 'target is invalid' do
+    it 'is invalid' do
       is_expected.to be_invalid
     end
 
