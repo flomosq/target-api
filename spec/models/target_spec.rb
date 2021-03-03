@@ -57,7 +57,13 @@ RSpec.describe Target, type: :model do
     subject { build(:target, user: user) }
 
     it 'target is invalid' do
-      expect(subject).to be_invalid
+      is_expected.to be_invalid
+    end
+
+    it 'adds targets per user limit error' do
+      subject.valid?
+
+      expect(subject.errors[:targets]).to include(I18n.t('models.target.errors.targets_per_user_limit', limit: 10))
     end
   end
 end
