@@ -19,4 +19,22 @@ RSpec.describe 'POST api/v1/targets', type: :request do
       }.to change(Target, :count).by(-1)
     end
   end
+
+  context 'when the target does not exist' do
+    let!(:non_existent_id) { target.id + 1 }
+
+    subject { delete api_v1_target_path(non_existent_id), headers: headers }
+
+    it 'returns a not found response' do
+      subject
+
+      expect(response).to be_not_found
+    end
+
+    it 'returns the not found error message' do
+      subject
+
+      expect(json).to include(error: I18n.t('api.errors.not_found'))
+    end
+  end
 end
