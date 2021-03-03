@@ -54,4 +54,14 @@ RSpec.describe 'POST api/v1/targets', type: :request do
       expect(json).to include(error: I18n.t('api.errors.not_found'))
     end
   end
+
+  context 'when given incorrect headers' do
+    let!(:headers) { {} }
+
+    it 'returns unauthorized' do
+      subject
+
+      expect(response).to be_unauthorized
+    end
+  end
 end
