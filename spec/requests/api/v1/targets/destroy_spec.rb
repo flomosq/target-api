@@ -37,4 +37,21 @@ RSpec.describe 'POST api/v1/targets', type: :request do
       expect(json).to include(error: I18n.t('api.errors.not_found'))
     end
   end
+
+  context 'when the target does not belong to the logged user' do
+    let(:other_user) { create(:user) }
+    let!(:target) { create(:target, user: other_user) }
+
+    it 'returns a not found response' do
+      subject
+
+      expect(response).to be_not_found
+    end
+
+    it 'returns the not found error message' do
+      subject
+
+      expect(json).to include(error: I18n.t('api.errors.not_found'))
+    end
+  end
 end
