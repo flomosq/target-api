@@ -7,7 +7,7 @@ module Api
 
       private
 
-      def render_not_found(exception)
+      def render_not_found(_exception)
         render json: { error: I18n.t('api.errors.not_found') }, status: :not_found
       end
 
@@ -15,7 +15,7 @@ module Api
         render json: { errors: exception.record.errors.as_json }, status: :bad_request
       end
 
-      def render_parameter_missing(exception)
+      def render_parameter_missing(_exception)
         render json: { error: I18n.t('api.errors.missing_param') }, status: :unprocessable_entity
       end
     end
