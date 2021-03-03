@@ -1,6 +1,6 @@
 module Api
   module V1
-    class TargetsController < ApplicationController
+    class TargetsController < ApiController
       def create
         @target = user_targets.create!(target_params)
         render :show
