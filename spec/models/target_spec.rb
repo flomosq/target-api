@@ -63,7 +63,9 @@ RSpec.describe Target, type: :model do
     it 'adds targets per user limit error' do
       subject.valid?
 
-      expect(subject.errors[:targets]).to include(I18n.t('models.target.errors.targets_per_user_limit', limit: 10))
+      expect(subject.errors[:targets]).to include(
+        I18n.t('models.target.errors.targets_per_user_limit', limit: 10)
+      )
     end
   end
 end
