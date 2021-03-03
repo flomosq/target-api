@@ -12,5 +12,11 @@ RSpec.describe 'POST api/v1/targets', type: :request do
 
       expect(response).to be_successful
     end
+
+    it 'decreases the targets count' do
+      expect {
+        subject
+      }.to change(Target, :count).by(-1)
+    end
   end
 end
