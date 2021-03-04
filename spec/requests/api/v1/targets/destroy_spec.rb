@@ -1,4 +1,4 @@
-RSpec.describe 'POST api/v1/targets', type: :request do
+RSpec.describe 'DELETE api/v1/targets', type: :request do
   let(:user) { create(:user) }
   let!(:target) { create(:target, user: user) }
 
