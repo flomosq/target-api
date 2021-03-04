@@ -23,6 +23,8 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class Target < ApplicationRecord
+  include ActiveModel::Validations
+
   belongs_to :topic
   belongs_to :user
 
@@ -31,4 +33,6 @@ class Target < ApplicationRecord
                        numericality: { greater_than_or_equal_to: -90, less_than_or_equal_to: 90 }
   validates :longitude, presence: true,
                         numericality: { greater_than_or_equal_to: -180, less_than_or_equal_to: 180 }
+
+  validates_with Validators::TargetLimitPerUserValidator
 end

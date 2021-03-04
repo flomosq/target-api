@@ -36,3 +36,7 @@ en:
       invalid_content_type: Invalid content type header
       missing_param: A required param is missing
       not_found: Couldn't find the record
+  models:
+    target:
+      errors:
+        targets_per_user_limit: Target per user limit exceeded. Max allowed is %{limit}

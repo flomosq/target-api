@@ -25,7 +25,7 @@
 require 'rails_helper'
 
 RSpec.describe Target, type: :model do
-  subject { build(:target) }
+  subject { create(:target) }
 
   describe 'validations' do
     it { is_expected.to validate_presence_of(:title) }
@@ -47,5 +47,25 @@ RSpec.describe Target, type: :model do
   describe 'associations' do
     it { is_expected.to belong_to(:topic) }
     it { is_expected.to belong_to(:user) }
+  end
+
+  context 'when the user has 10 targets' do
+    let(:user) { create(:user) }
+
+    before { create_list(:target, 10, user: user) }
+
+    subject { build(:target, user: user) }
+
+    it 'is invalid' do
+      is_expected.to be_invalid
+    end
+
+    it 'adds targets per user limit error' do
+      subject.valid?
+
+      expect(subject.errors[:targets]).to include(
+        I18n.t('models.target.errors.targets_per_user_limit', limit: 10)
+      )
+    end
   end
 end
