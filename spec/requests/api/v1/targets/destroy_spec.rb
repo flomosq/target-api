@@ -21,7 +21,7 @@ RSpec.describe 'DELETE api/v1/targets', type: :request do
   end
 
   context 'when the target does not exist' do
-    let!(:non_existent_id) { target.id + 1 }
+    let(:non_existent_id) { target.id + 1 }
 
     subject { delete api_v1_target_path(non_existent_id), headers: headers }
 
