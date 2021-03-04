@@ -13,5 +13,11 @@ RSpec.describe 'GET api/v1/targets', type: :request do
 
       expect(response).to be_successful
     end
+
+    it "returns the user's targets" do
+      subject
+
+      expect(json[:targets].count).to eq(4)
+    end
   end
 end
