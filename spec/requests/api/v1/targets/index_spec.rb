@@ -26,4 +26,14 @@ RSpec.describe 'GET api/v1/targets', type: :request do
       expect(json[:targets]).to all(include(*%w[id title radius latitude longitude topic]))
     end
   end
+
+  context 'when given incorrect headers' do
+    let!(:headers) { {} }
+
+    it 'returns unauthorized' do
+      subject
+
+      expect(response).to be_unauthorized
+    end
+  end
 end
