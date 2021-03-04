@@ -19,5 +19,11 @@ RSpec.describe 'GET api/v1/targets', type: :request do
 
       expect(json[:targets].count).to eq(4)
     end
+
+    it 'returns the correct data' do
+      subject
+
+      expect(json[:targets]).to all(include(*%w[id title radius latitude longitude topic]))
+    end
   end
 end
