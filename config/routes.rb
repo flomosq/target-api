@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  mount_devise_token_auth_for 'User', at: 'api/v1/users'
-  
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
+
+  mount_devise_token_auth_for 'User', at: 'api/v1/users'
 
   namespace :api do
     namespace :v1, defaults: { format: :json } do
