@@ -6,7 +6,15 @@ module Api
         render :show
       end
 
+      def destroy
+        current_target.destroy!
+      end
+
       private
+
+      def current_target
+        user_targets.find(params[:id])
+      end
 
       def user_targets
         current_user.targets
