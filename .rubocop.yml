@@ -9,6 +9,7 @@ AllCops:
     - config/**/*
     - bin/**/*
     - vendor/**/*
+    - node_modules/**/*
 Layout/SpaceBeforeFirstArg:
   Exclude:
     - app/views/api/**/**/*
