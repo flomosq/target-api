@@ -1,6 +1,10 @@
 module Api
   module V1
-    class ApiController < ApplicationController
+    class ApiController < ActionController::API
+      include DeviseTokenAuth::Concerns::SetUserByToken
+
+      before_action :authenticate_user!, unless: :devise_controller?
+
       rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
       rescue_from ActiveRecord::RecordInvalid, with: :render_record_invalid
       rescue_from ActionController::ParameterMissing, with: :render_parameter_missing

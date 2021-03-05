@@ -9,6 +9,7 @@ AllCops:
     - config/**/*
     - bin/**/*
     - vendor/**/*
+    - node_modules/**/*
 Layout/SpaceBeforeFirstArg:
   Exclude:
     - app/views/api/**/**/*
@@ -22,6 +23,7 @@ Metrics/AbcSize:
 Metrics/BlockLength:
   Exclude:
     - spec/**/*
+    - app/admin/**/*
   CountComments: false  # count full line comments?
   Max: 25
 Metrics/BlockNesting:

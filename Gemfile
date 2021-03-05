@@ -19,12 +19,14 @@ gem 'puma', '~> 5.0'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
+gem 'activeadmin', '~> 2.9'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'devise_token_auth', '~> 1.1.5'
 gem 'dotenv-rails', '~> 2.7'
 gem 'jbuilder', '~> 2.11'
 gem 'sendgrid', '~> 1.2'
+gem 'webpacker', '~> 5.2'
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
