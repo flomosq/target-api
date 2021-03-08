@@ -1,7 +1,7 @@
 ActiveAdmin.register Target do
-  actions :index, :show
+  includes :user
 
-  permit_params :user_id, :topic_id, :title, :radius, :latitude, :longitude
+  actions :index, :show
 
   index do
     id_column
