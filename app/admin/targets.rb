@@ -13,6 +13,8 @@ ActiveAdmin.register Target do
     actions
   end
 
+  filter :topic
+
   show do
     attributes_table do
       row :title
