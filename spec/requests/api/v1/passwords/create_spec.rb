@@ -12,5 +12,11 @@ RSpec.describe 'POST api/v1/users/password', type: :request do
 
       expect(response).to be_successful
     end
+
+    it 'sends an email' do
+      expect {
+        subject
+      }.to change(ActionMailer::Base.deliveries, :count).by(1)
+    end
   end
 end
