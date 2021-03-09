@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "data": {
+    "gender": "male",
+    "name": "Jane Doe",
+    "email": "<sequence>",
+    "uid": "<sequence>",
+    "id": "<id>",
+    "provider": "email",
+    "allow_password_change": false,
+    "nickname": null,
+    "image": null,
+    "created_at": "<date>",
+    "updated_at": "<date>"
+  }
+}
