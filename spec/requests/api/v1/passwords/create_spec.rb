@@ -29,4 +29,10 @@ RSpec.describe 'POST api/v1/users/password', type: :request do
       expect(response).to be_not_found
     end
   end
+
+  it 'does not send an email' do
+    expect {
+      subject
+    }.not_to change(ActionMailer::Base.deliveries, :count)
+  end
 end
