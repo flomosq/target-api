@@ -56,9 +56,9 @@ RSpec.describe 'PUT api/v1/users', type: :request do
     let(:params) { { nickname: nickname } }
 
     it 'does not update those keys' do
-      subject
-
-      expect(user.reload.nickname).not_to eq(nickname)
+      expect {
+        subject
+      }.not_to change(user.reload, :nickname)
     end
   end
 
