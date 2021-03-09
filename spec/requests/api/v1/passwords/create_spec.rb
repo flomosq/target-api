@@ -19,4 +19,14 @@ RSpec.describe 'POST api/v1/users/password', type: :request do
       }.to change(ActionMailer::Base.deliveries, :count).by(1)
     end
   end
+
+  context 'when given a non existent email' do
+    let(:email) { 'non_existent_email' }
+
+    it 'returns a not found response' do
+      subject
+
+      expect(response).to be_not_found
+    end
+  end
 end
