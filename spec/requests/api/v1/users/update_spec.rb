@@ -12,5 +12,14 @@ RSpec.describe 'PUT api/v1/users', type: :request do
 
       expect(response).to be_successful
     end
+
+    it 'updates the user' do
+      subject
+
+      updated_user = User.find(user.id)
+
+      expect(updated_user.gender).to eq(params[:gender])
+      expect(updated_user.name).to eq(params[:name])
+    end
   end
 end
