@@ -37,5 +37,13 @@ RSpec.describe 'PUT api/v1/users', type: :request do
 
       expect(response).to_not be_successful
     end
+
+    it 'does not update the user' do
+      subject
+
+      updated_user = User.find(user.id)
+
+      expect(updated_user.email).to_not eq(params[:email])
+    end
   end
 end
