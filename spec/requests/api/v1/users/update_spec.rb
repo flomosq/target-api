@@ -21,5 +21,11 @@ RSpec.describe 'PUT api/v1/users', type: :request do
       expect(updated_user.gender).to eq(params[:gender])
       expect(updated_user.name).to eq(params[:name])
     end
+
+    it 'returns the user' do
+      subject
+
+      Approvals.verify(response.body, name: 'updated_user', format: :json)
+    end
   end
 end
