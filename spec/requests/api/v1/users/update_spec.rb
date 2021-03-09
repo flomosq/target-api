@@ -28,4 +28,14 @@ RSpec.describe 'PUT api/v1/users', type: :request do
       Approvals.verify(response.body, name: 'updated_user', format: :json)
     end
   end
+
+  context 'with invalid data' do
+    let(:params) { { email: 'not_an_email' } }
+
+    it 'does not return success' do
+      subject
+
+      expect(response).to_not be_successful
+    end
+  end
 end
