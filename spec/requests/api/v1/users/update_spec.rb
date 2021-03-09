@@ -52,4 +52,17 @@ RSpec.describe 'PUT api/v1/users', type: :request do
       expect(json[:errors][:email]).to include('is not an email')
     end
   end
+
+  context 'when sending extra data' do
+    let(:nickname) { 'not_updated_nickname' }
+    let(:params) { { nickname: nickname } }
+
+    it 'does not update those keys' do
+      subject
+
+      updated_user = User.find(user.id)
+
+      expect(updated_user.nickname).not_to eq(nickname)
+    end
+  end
 end
