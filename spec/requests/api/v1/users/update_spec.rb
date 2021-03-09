@@ -65,4 +65,14 @@ RSpec.describe 'PUT api/v1/users', type: :request do
       expect(updated_user.nickname).not_to eq(nickname)
     end
   end
+
+  context 'when given incorrect headers' do
+    let(:headers) { {} }
+
+    it 'returns not found' do
+      subject
+
+      expect(response).to be_not_found
+    end
+  end
 end
