@@ -2,9 +2,9 @@ RSpec.describe 'DELETE api/v1/targets', type: :request do
   let(:user) { create(:user) }
   let!(:target) { create(:target, user: user) }
 
-  let(:headers) { auth_headers }
+  let(:headers) { auth_headers(user) }
 
-  subject { delete api_v1_target_path(target.id), headers: headers }
+  subject { delete api_v1_target_path(target.id), headers: headers, as: :json }
 
   context 'when the request is correct' do
     it 'returns a successful response' do
@@ -23,7 +23,7 @@ RSpec.describe 'DELETE api/v1/targets', type: :request do
   context 'when the target does not exist' do
     let(:non_existent_id) { target.id + 1 }
 
-    subject { delete api_v1_target_path(non_existent_id), headers: headers }
+    subject { delete api_v1_target_path(non_existent_id), headers: headers, as: :json }
 
     it 'returns a not found response' do
       subject

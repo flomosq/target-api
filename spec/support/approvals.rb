@@ -6,7 +6,8 @@ RSpec.configure do |_config|
 
     config.excluded_json_keys = {
       id: /(\A|_)id$/,
-      sequence: /\A(email|uid)$/
+      sequence: /\A(email|uid)$/,
+      date: /_at$/
     }
   end
 end

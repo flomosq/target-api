@@ -1,10 +1,10 @@
 RSpec.describe 'DELETE api/v1/users/sign_out', type: :request do
   let(:user) { create(:user) }
 
-  subject { delete destroy_user_session_path, headers: headers }
+  subject { delete destroy_user_session_path, headers: headers, as: :json }
 
   context 'when given correct headers' do
-    let!(:headers) { auth_headers }
+    let!(:headers) { auth_headers(user) }
 
     it 'returns a successful response' do
       subject

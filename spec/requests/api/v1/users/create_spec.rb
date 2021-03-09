@@ -13,7 +13,7 @@ RSpec.describe 'POST api/v1/users', type: :request do
     }
   end
 
-  subject { post user_registration_path, params: params }
+  subject { post user_registration_path, params: params, as: :json }
 
   it 'returns a successful response' do
     subject

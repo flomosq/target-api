@@ -3,9 +3,9 @@ RSpec.describe 'GET api/v1/targets', type: :request do
   let!(:user_targets) { create_list(:target, 4, user: user) }
   let!(:other_targets) { create_list(:target, 6) }
 
-  let!(:headers) { auth_headers }
+  let!(:headers) { auth_headers(user) }
 
-  subject { get api_v1_targets_path, headers: headers }
+  subject { get api_v1_targets_path, headers: headers, as: :json }
 
   context 'when the request is correct' do
     it 'returns a successful response' do
