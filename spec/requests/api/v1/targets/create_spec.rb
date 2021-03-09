@@ -5,9 +5,9 @@ RSpec.describe 'POST api/v1/targets', type: :request do
 
   let!(:params) { { target: target } }
 
-  let!(:headers) { auth_headers }
+  let!(:headers) { auth_headers(user) }
 
-  subject { post api_v1_targets_path, params: params, headers: headers }
+  subject { post api_v1_targets_path, params: params, headers: headers, as: :json }
 
   context 'when the request is correct' do
     let(:newest_target) { Target.last }

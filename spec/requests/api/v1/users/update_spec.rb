@@ -1,10 +1,10 @@
 RSpec.describe 'PUT api/v1/users', type: :request do
   let(:user) { create(:user) }
-  let!(:params) { attributes_for(:user, :with_name, :male).extract!(:name, :gender) }
+  let(:params) { { name: 'John Doe', gender: 'male' } }
 
-  let!(:headers) { auth_headers }
+  let(:headers) { auth_headers(user) }
 
-  subject { put user_registration_path, params: params, headers: headers }
+  subject { put user_registration_path, params: params, headers: headers, as: :json }
 
   context 'when the request is correct' do
     it 'returns a successful response' do
@@ -16,10 +16,8 @@ RSpec.describe 'PUT api/v1/users', type: :request do
     it 'updates the user' do
       subject
 
-      updated_user = User.find(user.id)
-
-      expect(updated_user.gender).to eq(params[:gender])
-      expect(updated_user.name).to eq(params[:name])
+      expect(user.reload.gender).to eq(params[:gender])
+      expect(user.name).to eq(params[:name])
     end
 
     it 'returns the user' do
@@ -60,9 +58,7 @@ RSpec.describe 'PUT api/v1/users', type: :request do
     it 'does not update those keys' do
       subject
 
-      updated_user = User.find(user.id)
-
-      expect(updated_user.nickname).not_to eq(nickname)
+      expect(user.reload.nickname).not_to eq(nickname)
     end
   end
 

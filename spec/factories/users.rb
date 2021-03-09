@@ -36,14 +36,6 @@ FactoryBot.define do
     password { '12345678' }
     gender { 'female' }
 
-    trait :male do
-      gender { 'male' }
-    end
-
-    trait :with_name do
-      name { 'Jane Doe' }
-    end
-
     after(:create, &:confirm)
   end
 end
