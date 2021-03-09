@@ -45,5 +45,11 @@ RSpec.describe 'PUT api/v1/users', type: :request do
 
       expect(updated_user.email).to_not eq(params[:email])
     end
+
+    it 'returns the error' do
+      subject
+
+      expect(json[:errors][:email]).to include('is not an email')
+    end
   end
 end
