@@ -40,5 +40,11 @@ RSpec.describe 'PUT api/v1/users/password', type: :request do
 
       expect(response).to have_http_status(:unprocessable_entity)
     end
+
+    it 'is expected an error message' do
+      subject
+
+      expect(json).to have_key(:errors)
+    end
   end
 end
