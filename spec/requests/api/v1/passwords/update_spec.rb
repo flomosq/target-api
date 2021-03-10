@@ -26,4 +26,19 @@ RSpec.describe 'PUT api/v1/users/password', type: :request do
       }.to change { user.updated_at }
     end
   end
+
+  context 'when the password is too short' do
+    let(:params) do
+      {
+        password: 'short',
+        password_confirmation: 'short'
+      }
+    end
+
+    it 'does not return a successful response' do
+      subject
+
+      expect(response).to have_http_status(:unprocessable_entity)
+    end
+  end
 end
