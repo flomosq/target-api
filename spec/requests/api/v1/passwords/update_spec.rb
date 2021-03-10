@@ -73,5 +73,11 @@ RSpec.describe 'PUT api/v1/users/password', type: :request do
 
       expect(json).to have_key(:errors)
     end
+
+    it 'does not update the user' do
+      expect {
+        subject
+      }.not_to change { user.password }
+    end
   end
 end
