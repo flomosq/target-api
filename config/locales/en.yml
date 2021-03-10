@@ -46,3 +46,7 @@ en:
         intro_message: Hello %{email}!
         content: Someone has requested a link to change your password. You can do this through the link below.
         link_text: Change my password
+  contact_mailer:
+    contact:
+      subject: New question
+      content: The user %{email} has asked the following question

@@ -3,6 +3,10 @@ module Api
     class ContactsController < ApiController
       def create
         Contact.create!(contact_params)
+        ContactMailer.contact(
+          contact_params[:email],
+          contact_params[:message]
+        ).deliver_later
       end
 
       private
