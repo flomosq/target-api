@@ -4,7 +4,7 @@ RSpec.describe 'POST api/v1/users/password', type: :request do
 
   let(:params) { { email: email, redirect_url: '' } }
 
-  subject { post user_password_path, params: params }
+  subject { post user_password_path, params: params, as: :json }
 
   context 'when the request is correct' do
     it 'returns a successful response' do
