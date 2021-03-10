@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'GET api/v1/users/password/edit', type: :request do
+RSpec.describe 'GET api/v1/users/password/edit', type: :request do
   let(:user) { create(:user, password: 'mypass123') }
   let(:password_token) { user.send(:set_reset_password_token) }
 
