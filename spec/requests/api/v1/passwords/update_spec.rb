@@ -53,4 +53,19 @@ RSpec.describe 'PUT api/v1/users/password', type: :request do
       }.not_to change { user.password }
     end
   end
+
+  context 'when the password is too long' do
+    let(:params) do
+      {
+        password: 'thisisaverylongpassword',
+        password_confirmation: 'thisisaverylongpassword'
+      }
+    end
+
+    it 'does not return a successful response' do
+      subject
+
+      expect(response).to have_http_status(:unprocessable_entity)
+    end
+  end
 end
