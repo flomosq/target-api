@@ -80,4 +80,25 @@ RSpec.describe 'PUT api/v1/users/password', type: :request do
       }.not_to change { user.password }
     end
   end
+
+  context 'when the passwords do not match' do
+    let(:params) do
+      {
+        password: 'password',
+        password_confirmation: 'password_confirmation'
+      }
+    end
+
+    it 'does not return a successful response' do
+      subject
+
+      expect(response).to have_http_status(:unprocessable_entity)
+    end
+
+    it 'is expected an error message' do
+      subject
+
+      expect(json).to have_key(:errors)
+    end
+  end
 end
