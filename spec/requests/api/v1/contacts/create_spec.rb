@@ -14,5 +14,11 @@ RSpec.describe 'POST api/v1/targets', type: :request do
 
       expect(response).to be_no_content
     end
+
+    it 'creates the contact' do
+      expect {
+        subject
+      }.to change(Contact, :count).by(1)
+    end
   end
 end
