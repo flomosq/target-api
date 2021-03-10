@@ -19,5 +19,11 @@ RSpec.describe 'PUT api/v1/users/password', type: :request do
 
       expect(response).to be_successful
     end
+
+    it 'updates the user' do
+      expect {
+        subject
+      }.to change { user.updated_at }
+    end
   end
 end
