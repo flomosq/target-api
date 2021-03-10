@@ -30,6 +30,12 @@ RSpec.describe 'POST api/v1/targets', type: :request do
 
       expect(response).to be_bad_request
     end
+
+    it 'returns an error message' do
+      subject
+
+      expect(json[:errors]).to include(email: include("can't be blank"))
+    end
   end
 
   context 'when given incorrect headers' do
