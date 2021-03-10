@@ -13,9 +13,17 @@ describe 'GET api/v1/users/password/edit', type: :request do
 
   subject { get edit_user_password_path, params: params }
 
-  it 'returns the access token, the uid and the client id' do
-    subject
+  context 'when given the correct data' do
+    it 'is a redirection' do
+      subject
 
-    expect(response.header['Location']).to include('access-token', 'uid', 'client_id')
+      expect(response).to be_redirection
+    end
+
+    it 'returns the access token, the uid and the client id' do
+      subject
+
+      expect(response.header['Location']).to include('access-token', 'uid', 'client_id')
+    end
   end
 end
