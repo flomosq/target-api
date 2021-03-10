@@ -22,6 +22,16 @@ RSpec.describe 'POST api/v1/targets', type: :request do
     end
   end
 
+  context 'when missing any of the required values' do
+    let(:contact) { attributes_for(:contact, email: nil) }
+
+    it 'returns bad request' do
+      subject
+
+      expect(response).to be_bad_request
+    end
+  end
+
   context 'when given incorrect headers' do
     let(:headers) { {} }
 
