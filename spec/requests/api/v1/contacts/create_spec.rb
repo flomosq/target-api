@@ -42,6 +42,12 @@ RSpec.describe 'POST api/v1/targets', type: :request do
 
       expect(json[:errors]).to include(email: include("can't be blank"))
     end
+
+    it 'does not enqueue an email delivery job' do
+      expect {
+        subject
+      }.not_to have_enqueued_job
+    end
   end
 
   context 'when given incorrect headers' do
