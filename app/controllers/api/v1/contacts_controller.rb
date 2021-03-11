@@ -2,10 +2,10 @@ module Api
   module V1
     class ContactsController < ApiController
       def create
-        Contact.create!(contact_params)
+        contact = Contact.create!(contact_params)
         ContactMailer.contact(
-          contact_params[:email],
-          contact_params[:message]
+          contact.email,
+          contact.message
         ).deliver_later
       end
 
