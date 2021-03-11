@@ -9,6 +9,8 @@ RSpec.describe 'POST api/v1/targets', type: :request do
   subject { post api_v1_contacts_path, params: params, headers: headers, as: :json }
 
   context 'when the request is correct' do
+    let(:newest_contact) { Contact.last }
+
     it 'returns a no content response' do
       subject
 
@@ -19,6 +21,13 @@ RSpec.describe 'POST api/v1/targets', type: :request do
       expect {
         subject
       }.to change(Contact, :count).by(1)
+    end
+
+    it 'creates the contact with the correct data' do
+      subject
+
+      expect(newest_contact.email).to eq(contact[:email])
+      expect(newest_contact.message).to eq(contact[:message])
     end
 
     it 'enqueues an email delivery job' do
