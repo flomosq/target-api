@@ -15,5 +15,13 @@ RSpec.describe Contact, type: :model do
   describe 'validations' do
     it { is_expected.to validate_presence_of(:email) }
     it { is_expected.to validate_presence_of(:message) }
+
+    it { is_expected.not_to allow_value('example').for(:email) }
+    it { is_expected.not_to allow_value('example.com').for(:email) }
+    it { is_expected.not_to allow_value('@example.com').for(:email) }
+    it { is_expected.not_to allow_value('name@example').for(:email) }
+    it { is_expected.not_to allow_value('name@').for(:email) }
+
+    it { is_expected.to allow_value('name@example.com').for(:email) }
   end
 end
