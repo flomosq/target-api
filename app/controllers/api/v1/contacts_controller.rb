@@ -1,6 +1,8 @@
 module Api
   module V1
     class ContactsController < ApiController
+      skip_before_action :authenticate_user!
+
       def create
         contact = Contact.create!(contact_params)
         ContactMailer.contact(

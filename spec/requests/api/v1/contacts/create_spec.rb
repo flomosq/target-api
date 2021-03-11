@@ -57,21 +57,11 @@ RSpec.describe 'POST api/v1/targets', type: :request do
         subject
       }.not_to have_enqueued_job
     end
-  end
 
-  context 'when given incorrect headers' do
-    let(:headers) { {} }
-
-    it 'returns unauthorized' do
-      subject
-
-      expect(response).to be_unauthorized
-    end
-
-    it 'does not enqueue an email delivery job' do
+    it 'does not create the contact' do
       expect {
         subject
-      }.not_to have_enqueued_job
+      }.not_to change(Contact, :count)
     end
   end
 end
