@@ -58,5 +58,11 @@ RSpec.describe 'POST api/v1/targets', type: :request do
 
       expect(response).to be_unauthorized
     end
+
+    it 'does not enqueue an email delivery job' do
+      expect {
+        subject
+      }.not_to have_enqueued_job
+    end
   end
 end
