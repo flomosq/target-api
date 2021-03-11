@@ -8,7 +8,9 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-class GeneralInfoItem < ApplicationRecord
-  validates :name, presence: true, uniqueness: { case_sensitive: false }
-  validates :content, presence: true
+FactoryBot.define do
+  factory :general_info_item do
+    name { Faker::Lorem.unique.word }
+    content { Faker::Lorem.paragraph }
+  end
 end
