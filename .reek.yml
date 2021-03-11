@@ -10,7 +10,8 @@ detectors:
     exclude: []
   ControlParameter:
     enabled: true
-    exclude: []
+    exclude:
+      - EmailValidator#validate_each
   DataClump:
     enabled: true
     exclude: []
@@ -23,7 +24,8 @@ detectors:
     allow_calls: []
   FeatureEnvy:
     enabled: true
-    exclude: []
+    exclude:
+      - ContactsController#create
   InstanceVariableAssumption:
     enabled: false
   IrresponsibleModule:
