@@ -8,4 +8,10 @@ RSpec.describe 'GET api/v1/about', type: :request do
 
     expect(response).to be_successful
   end
+
+  it 'returns the corresponding information' do
+    subject
+
+    expect(json[:about]).to include(name: about_info.name, content: about_info.content)
+  end
 end
