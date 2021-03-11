@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       resources :topics, only: :index
       resources :targets, only: %i[index create destroy]
       resources :contacts, only: :create
+      get 'about', to: 'general_info_items#about'
     end
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
