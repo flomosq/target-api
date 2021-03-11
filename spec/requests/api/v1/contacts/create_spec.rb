@@ -20,6 +20,12 @@ RSpec.describe 'POST api/v1/targets', type: :request do
         subject
       }.to change(Contact, :count).by(1)
     end
+
+    it 'enqueues an email delivery job' do
+      expect {
+        subject
+      }.to have_enqueued_job.on_queue('default')
+    end
   end
 
   context 'when missing any of the required values' do
