@@ -57,10 +57,11 @@ ActiveRecord::Schema.define(version: 2021_03_11_210239) do
   end
 
   create_table "general_info_items", force: :cascade do |t|
-    t.string "name"
-    t.text "content"
+    t.string "name", null: false
+    t.text "content", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_general_info_items_on_name", unique: true
   end
 
   create_table "targets", force: :cascade do |t|

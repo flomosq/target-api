@@ -4,7 +4,7 @@ module Api
       skip_before_action :authenticate_user!
 
       def about
-        @about = GeneralInfoItem.find_by_name!('about')
+        @about = GeneralInfoItem.find_by!(name: 'about')
       end
     end
   end
