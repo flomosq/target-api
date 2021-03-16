@@ -9,7 +9,7 @@ module Helpers
 
   def file_body(filename)
     {
-      data: "data:image/png;base64,#{encode_base64(filename)}",
+      data: "data:image/png;base64,#{encode_from_filename(filename)}",
       filename: filename,
       content_type: 'image/png'
     }
@@ -25,7 +25,7 @@ module Helpers
     ).read
   end
 
-  def encode_base64(filename)
+  def encode_from_filename(filename)
     file = open_file(filename)
     Base64.encode64(file)
   end
