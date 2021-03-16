@@ -39,6 +39,12 @@ RSpec.describe 'PUT api/v1/users', type: :request do
 
         expect(response).to be_successful
       end
+
+      it 'user has avatar attached' do
+        subject
+
+        expect(user.reload.avatar.attached?).to be true
+      end
     end
   end
 
