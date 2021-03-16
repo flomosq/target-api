@@ -45,6 +45,12 @@ RSpec.describe 'PUT api/v1/users', type: :request do
 
         expect(user.reload.avatar.attached?).to be true
       end
+
+      it "increases active storage attachements' count" do
+        expect {
+          subject
+        }.to change(ActiveStorage::Attachment, :count).by(1)
+      end
     end
   end
 
