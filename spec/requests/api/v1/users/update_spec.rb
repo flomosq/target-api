@@ -25,6 +25,21 @@ RSpec.describe 'PUT api/v1/users', type: :request do
 
       Approvals.verify(response.body, name: 'updated_user', format: :json)
     end
+
+    context 'when an avatar is attached' do
+      let(:avatar_filename) { 'icon.png' }
+      let(:avatar) { file_body(avatar_filename) }
+
+      before do
+        params[:avatar] = avatar
+      end
+
+      it 'returns a successful response' do
+        subject
+
+        expect(response).to be_successful
+      end
+    end
   end
 
   context 'with invalid data' do
