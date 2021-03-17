@@ -76,14 +76,6 @@ ActiveRecord::Schema.define(version: 2021_03_16_005156) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "general_info", force: :cascade do |t|
-    t.string "name", null: false
-    t.text "content", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["name"], name: "index_general_info_on_name"
-  end
-
   create_table "general_info_items", force: :cascade do |t|
     t.string "name", null: false
     t.text "content", null: false
